@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block content%}
+
+<div class="container">
+    <form action="/salvar" method="POST">
+        <div class="form-group">
+            <input type="hidden" id="" name="id" value="{{funcionario.get_id()}}">
+            <label for="exampleFormControlInput1">Nome</label>
+            <input type="text" class="form-control" id="" name="nome" value="{{funcionario.get_nome()}}">
+            <label for="exampleFormControlInput1">Sobrenome</label>
+            <input type="text" class="form-control" id="" name="sobrenome" value="{{funcionario.get_sobrenome()}}">
+            <label for="exampleFormControlInput1">CPF</label>
+            <input type="text" class="form-control" id="" name="cpf" value="{{funcionario.get_cpf()}}">
+            <label for="exampleFormControlInput1">Cargo</label>
+            <input type="text" class="form-control" id="" name="cargo" value="{{funcionario.get_cargo()}}">
+            <label for="exampleFormControlInput1">Salário</label>
+            <input type="number" class="form-control" id="" name="salario" placeholder="R$" value="{{funcionario.get_salario()}}">
+            <label for="exampleFormControlInput1">PIS</label>
+            <input type="number" class="form-control" id="" name="pis" value="{{funcionario.get_pis()}}">
+        </div>
+        
+
+        <div class="form-group">
+            <label for="exampleFormControlSelect2">Selecione a Equipe</label>
+            <select class="form-control" id="" name="equipe_id">
+                <option value="" selected disabled hidden>Escolha a equipe</option>
+                {% for e in lista_equipes %}
+                    {% if e.get_id()==funcionario.get_equipe().get_id() %}
+                        <option value="{{e.get_id()}}" selected>{{e.get_nome()}}</option>                    
+                        {% else %}
+                            <option value="{{e.get_id()}}">{{e.get_nome()}}</option>                   
+                    {% endif %}
+                {% endfor%}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect2">Selecione a Linguagem</label>
+            <select class="form-control" id="" name="linguagem_id">
+                <option value="" selected disabled hidden>Escolha a linguagem</option>
+                {% for l in lista_linguagens %}
+                    {% if l.get_id()==funcionario.get_linguagem().get_id() %}
+                        <option value="{{l.get_id()}}" selected>{{l.get_nome_linguagem()}}</option>
+                        {% else %}
+                            <option value="{{l.get_id()}}">{{l.get_nome_linguagem()}}</option>                   
+                    {% endif %}
+                {% endfor%}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Salvar</button>
+    </form>
+</div>
+
+
+{% endblock %}

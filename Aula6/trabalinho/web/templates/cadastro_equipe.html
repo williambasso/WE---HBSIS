@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="container">
+    <form action="/salvar_equipe" method="POST">
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Nome</label>
+            <input type="text" class="form-control" id="" name="nome_equipe">
+        </div>
+        <button type="submit" class="btn btn-success">Salvar</button>
+    </form>
+</div>
+
+{% endblock %}

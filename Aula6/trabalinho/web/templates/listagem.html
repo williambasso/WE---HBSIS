@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="container">
+    <!-- Lista Funcionários -->
+    <br>
+    <h5 class="text-center">Funcionários</h5>
+    <br>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Sobrenome</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">Cargo</th>
+                    <th scope="col">Pis</th>
+                    <th scope="col">Salario</th>
+                    <th scope="col">Equipe</th>
+                    <th scope="col">Linguagem</th>
+                    <th scope="col"> </th>
+                    <th scope="col"> </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for f in funcionario %}
+                <tr>
+                    <td>
+                        {{ f.get_id() }}
+                    </td>
+                    <td>
+                        {{ f.get_nome() }}
+                    </td>
+                    <td>
+                        {{ f.get_sobrenome() }}
+                    </td>
+                    <td>
+                        {{ f.get_cpf() }}
+                    </td>
+                    <td>
+                        {{ f.get_salario() }}
+                    </td>
+                    <td>
+                        {{ f.get_cargo() }}
+                    </td>
+                    <td>
+                        {{ f.get_pis() }}
+                    </td>
+                    <td>
+                        {{ f.get_equipe().get_nome() }}
+                    </td>
+                    <td>
+                        {{ f.get_linguagem().get_nome_linguagem() }}
+                    </td>
+                    <td><a href="/editar_funcionario?id={{f.get_id()}}" class="btn btn-warning">Editar</a></td>
+                    <td><a href="/excluir_funcionario?id={{f.get_id()}}" class="btn btn-danger">Excluir</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Fim lista Funcionários -->
+
+
+    <!-- Fim container -->
+</div>
+
+{% endblock %}
